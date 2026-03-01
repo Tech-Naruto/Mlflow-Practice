@@ -9,6 +9,7 @@ import mlflow
 import mlflow.sklearn
 import dagshub
 import logging
+import warnings
 
 dagshub.init(repo_owner='Tech-Naruto', repo_name='Mlflow-Practice', mlflow=True)
 
@@ -54,7 +55,7 @@ if __name__ == "__main__":
 
     with mlflow.start_run(run_name="train-run"):
         lr = ElasticNet(alpha=alpha, l1_ratio=l1_ratio, random_state=42)
-        ls.fit(train_x, train_y)
+        lr.fit(train_x, train_y)
 
         predicted_qualities = lr.predict(test_x)
 
